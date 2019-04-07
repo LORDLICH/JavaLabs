@@ -35,7 +35,7 @@ public class ComplexExponential extends AbstractComplex<ComplexExponential>{
         this.angle=angle;
     }
 
-    public static ComplexAlgebraic toComplexAlgebraic(ComplexExponential number) {
+    public ComplexAlgebraic toComplexAlgebraic(ComplexExponential number) {
         ComplexAlgebraic result = new ComplexAlgebraic(number.absValue*Math.cos(number.angle),
                 number.absValue*Math.sin(number.angle));
         return result;

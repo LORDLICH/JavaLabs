@@ -34,7 +34,7 @@ public class ComplexAlgebraic extends AbstractComplex<ComplexAlgebraic>{
         this.imaginaryPart=imaginaryPart;
     }
 
-    public static ComplexExponential toComplexExponential(ComplexAlgebraic number) {
+    public ComplexExponential toComplexExponential(ComplexAlgebraic number) {
         ComplexExponential result = new ComplexExponential(Math.sqrt(Math.pow(number.realPart,2)+Math.pow(number.imaginaryPart,2)),
                 Math.atan(number.imaginaryPart/number.realPart));
         return result;
