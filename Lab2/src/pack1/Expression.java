@@ -6,8 +6,7 @@ public class Expression {
     private ArrayList<Number> list = new ArrayList<>();
     private char operationType;
 
-    public Expression()
-    {
+    public Expression() {
         Scanner reader = new Scanner(System.in);
         System.out.println("Enter operation type(+,-):");
         operationType=reader.next().charAt(0);
