@@ -3,14 +3,16 @@ package pack1;
 import java.util.*;
 
 public class Expression {
-    private LinkedList<Number> list = new LinkedList<>();
+    private ArrayList<Number> list = new ArrayList<>();
     private char operationType;
 
-    public Expression(char operationType)
+    public Expression()
     {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Enter operation type(+,-):");
+        operationType=reader.next().charAt(0);
         list.add(new ComplexAlgebraic());
         list.add(new ComplexAlgebraic());
-        this.operationType=operationType;
     }
 
     public void calculate(){
