@@ -2,8 +2,8 @@ package pack1;
 import  java.util.*;
 
 public class ComplexAlgebraic extends Complex{
-    private Integer realPart;
-    private Integer imaginaryPart;
+    private double realPart;
+    private double imaginaryPart;
 
     public ComplexAlgebraic() {
         Scanner reader = new Scanner(System.in);
@@ -13,24 +13,24 @@ public class ComplexAlgebraic extends Complex{
         imaginaryPart=reader.nextInt();
     }
 
-    public ComplexAlgebraic(Integer realPart, Integer imaginaryPart) {
+    public ComplexAlgebraic(double realPart, double imaginaryPart) {
         this.realPart=realPart;
         this.imaginaryPart = imaginaryPart;
     }
 
-    public Integer getRealPart() {
+    public double getRealPart() {
         return realPart;
     }
 
-    public Integer getImaginaryPart() {
+    public double getImaginaryPart() {
         return imaginaryPart;
     }
 
-    public void setRealPart(Integer realPart) {
+    public void setRealPart(double realPart) {
         this.realPart=realPart;
     }
 
-    public  void setImaginaryPart(Integer imaginaryPart) {
+    public  void setImaginaryPart(double imaginaryPart) {
         this.imaginaryPart=imaginaryPart;
     }
 
