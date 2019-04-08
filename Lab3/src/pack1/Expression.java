@@ -2,7 +2,7 @@ package pack1;
 import java.util.*;
 
 public class Expression {
-    private LinkedList<Number> list = new LinkedList<>();
+    private ArrayList<Number> list = new ArrayList<>();
     private char operationType;
 
     public Expression() {
