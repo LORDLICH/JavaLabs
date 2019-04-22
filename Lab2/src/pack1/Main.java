@@ -1,5 +1,6 @@
 package pack1;
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -20,15 +22,12 @@ public class Main extends Application{
 
         root.setGridLinesVisible(false);
         root.setPadding(new Insets(5, 5, 5, 5));
-        for (int i = 0; i < 5; i++) {
-            root.getColumnConstraints().add(new ColumnConstraints());
-        }
 
-        root.getColumnConstraints().get(0).setPercentWidth(20);
-        root.getColumnConstraints().get(1).setPercentWidth(30);
-        root.getColumnConstraints().get(2).setPercentWidth(10);
-        root.getColumnConstraints().get(3).setPercentWidth(30);
-        root.getColumnConstraints().get(4).setPercentWidth(10);
+        root.getColumnConstraints().add(new ColumnConstraints(100,100,100, Priority.NEVER, HPos.LEFT,true));
+        root.getColumnConstraints().add(new ColumnConstraints(10,15,Double.MAX_VALUE, Priority.ALWAYS, HPos.CENTER,true));
+        root.getColumnConstraints().add(new ColumnConstraints(20,30,50, Priority.NEVER, HPos.LEFT,true));
+        root.getColumnConstraints().add(new ColumnConstraints(10,15,Double.MAX_VALUE, Priority.ALWAYS, HPos.CENTER,true));
+        root.getColumnConstraints().add(new ColumnConstraints(20,20,20, Priority.NEVER, HPos.LEFT,true));
 
         root.add(new Label("Number 1: z = "), 0, 0);
         root.add(new Label("Number 2: z = "), 0, 1);
