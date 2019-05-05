@@ -13,6 +13,6 @@ public class Human {
 
     public void calculateExpression(){
         Expression expression = new Expression();
-        expression.calculate();
+        //expression.calculate();
     }
 }

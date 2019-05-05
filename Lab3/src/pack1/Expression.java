@@ -1,78 +1,126 @@
 package pack1;
 import java.util.*;
+import javafx.scene.control.Label;
 
 public class Expression {
     private ArrayList<Number> list = new ArrayList<>();
     private char operationType;
+   private char resultType;
 
-    public Expression() {
-        Scanner reader = new Scanner(System.in);
-        for(int i =0;i<2;i++) {
-            System.out.println("Choose the form of the complex number:\n1 - Algebraic form\n2 - Exponential form");
-            char type = reader.next().charAt(0);
-            switch (type) {
-                case '1':{
-                    list.add(new ComplexAlgebraic());
-                    break;
-                }
-                case '2':{
-                    list.add(new ComplexExponential());
-                    break;
-                }
+    public Expression(double firstValue1, double firstValue2,
+                      double secondValue1, double secondValue2,
+                      char operationType, char resultType) {
+        this.operationType=operationType;
+        this.resultType=resultType;
+        switch (resultType) {
+            case 'A': {
+                list.add(new ComplexAlgebraic(firstValue1,firstValue2));
+                list.add(new ComplexAlgebraic(secondValue1,secondValue2));
+                break;
+            }
+            case 'E':{
+                list.add(new ComplexExponential(firstValue1,firstValue2));
+                list.add(new ComplexExponential(secondValue1,secondValue2));
+                break;
+            }
+            case 'M':{
+                list.add(new ComplexAlgebraic(firstValue1,firstValue2));
+                list.add(new ComplexExponential(secondValue1,secondValue2));
+                break;
             }
         }
-        System.out.println("Choose operation type(+,-,*,/):");
-        operationType = reader.next().charAt(0);
+
     }
 
-    public void calculate(){
-        if(list.get(0) instanceof ComplexAlgebraic){
-            ComplexAlgebraic result = new ComplexAlgebraic(0,0);
-            if(list.get(1) instanceof ComplexExponential){
-                list.set(1, ((ComplexExponential) list.get(1)).toComplexAlgebraic((ComplexExponential)list.get(1)));
-            }
-            switch (operationType){
-                case '+': result = result.addFunc((ComplexAlgebraic) list.get(0),(ComplexAlgebraic) list.get(1)); break;
-                case '-': result = result.subFunc((ComplexAlgebraic) list.get(0),(ComplexAlgebraic) list.get(1)); break;
-                case '*': result = result.mulFunc((ComplexAlgebraic) list.get(0),(ComplexAlgebraic) list.get(1)); break;
-                case '/': result = result.divFunc((ComplexAlgebraic) list.get(0),(ComplexAlgebraic) list.get(1)); break;
-            }
+    public Expression() {
+    }
 
-            if(result.getRealPart()!=0){
-                System.out.print(result.getRealPart());
-            }
-            if(result.getImaginaryPart()>0){
-                System.out.print('+' + String.valueOf(result.getImaginaryPart()) + 'i');
-            } else if(result.getImaginaryPart()<0) {
-                System.out.print(String.valueOf(result.getImaginaryPart()) + 'i');
-            }
-        }
-        if(list.get(0) instanceof ComplexExponential){
-            ComplexExponential result = new ComplexExponential(0,0);
-            if(list.get(1) instanceof ComplexAlgebraic){
-                list.set(1, ((ComplexAlgebraic) list.get(1)).toComplexExponential((ComplexAlgebraic) list.get(1)));
-            }
-            switch (operationType){
-                case '+': result = result.addFunc((ComplexExponential) list.get(0),(ComplexExponential) list.get(1)); break;
-                case '-': result = result.subFunc((ComplexExponential) list.get(0),(ComplexExponential) list.get(1)); break;
-                case '*': result = result.mulFunc((ComplexExponential) list.get(0),(ComplexExponential) list.get(1)); break;
-                case '/': result = result.divFunc((ComplexExponential) list.get(0),(ComplexExponential) list.get(1)); break;
-            }
-
-            if(result.getAbsValue()!=0) {
-                if(result.getAngle() == 0){
-                    System.out.print(result.getAbsValue());
-                } else{
-                    System.out.print(String.valueOf(result.getAbsValue()) + "e^");
-                    if (result.getAngle() > 0) {
-                        System.out.print(String.valueOf(result.getAngle()) + 'i');
+    public void calculate(Label label1, Label label2, Label label3, Label label4){
+        switch (resultType){
+            case 'A':{
+                ComplexAlgebraic firstComplex = (ComplexAlgebraic)list.get(0);
+                ComplexAlgebraic secondComplex = (ComplexAlgebraic)list.get(1);
+                ComplexAlgebraic result = new ComplexAlgebraic(0,0);
+                switch (operationType){
+                    case '+':{
+                        result = result.addFunc(firstComplex,secondComplex);
+                        break;
                     }
-                    if (result.getAngle() < 0) {
-                        System.out.print(String.valueOf('-' + result.getAngle()) + 'i');
+                    case '-':{
+                        result = result.subFunc(firstComplex,secondComplex);
+                        break;
+                    }
+                    case '*':{
+                        result = result.mulFunc(firstComplex,secondComplex);
+                        break;
+                    }
+                    case '/':{
+                        result = result.divFunc(firstComplex,secondComplex);
+                        break;
                     }
                 }
-            } else{
-                System.out.print(0);
+                label1.setText("   " + String.valueOf(result.getRealPart()));
+                label2.setText("   " + String.valueOf(result.getImaginaryPart()));
+                break;
+            }
+            case 'E':{
+                ComplexExponential firstComplex = (ComplexExponential)list.get(0);
+                ComplexExponential secondComplex = (ComplexExponential)list.get(1);
+                ComplexExponential result = new ComplexExponential(0,0);
+                switch (operationType){
+                    case '+':{
+                        result = result.addFunc(firstComplex,secondComplex);
+                        break;
+                    }
+                    case '-':{
+                        result = result.subFunc(firstComplex,secondComplex);
+                        break;
+                    }
+                    case '*':{
+                        result = result.mulFunc(firstComplex,secondComplex);
+                        break;
+                    }
+                    case '/':{
+                        result = result.divFunc(firstComplex,secondComplex);
+                        break;
+                    }
+                }
+                label1.setText("   " + String.valueOf(result.getAbsValue()));
+                label2.setText("   " + String.valueOf(result.getAngle()));
+                break;
+            }
+            case 'M':{
+                ComplexAlgebraic firstComplex = (ComplexAlgebraic)list.get(0);
+                ComplexExponential secondComplex = (ComplexExponential)list.get(1);
+                ComplexAlgebraic result1 = new ComplexAlgebraic(0,0);
+                ComplexExponential result2 = new ComplexExponential(0,0);
+                switch (operationType){
+                    case '+':{
+                        result1 = result1.addFunc(firstComplex,secondComplex.toComplexAlgebraic(secondComplex));
+                        result2 = result1.toComplexExponential(result1);
+                        break;
+                    }
+                    case '-':{
+                        result1 = result1.subFunc(firstComplex,secondComplex.toComplexAlgebraic(secondComplex));
+                        result2 = result1.toComplexExponential(result1);
+                        break;
+                    }
+                    case '*':{
+                        result1 = result1.mulFunc(firstComplex,secondComplex.toComplexAlgebraic(secondComplex));
+                        result2 = result1.toComplexExponential(result1);
+                        break;
+                    }
+                    case '/':{
+                        result1 = result1.divFunc(firstComplex,secondComplex.toComplexAlgebraic(secondComplex));
+                        result2 = result1.toComplexExponential(result1);
+                        break;
+                    }
+                }
+                label1.setText("   " + String.valueOf(result1.getRealPart()));
+                label2.setText("   " + String.valueOf(result1.getImaginaryPart()));
+                label3.setText("   " + String.valueOf(result2.getAbsValue()));
+                label4.setText("   " + String.valueOf(result2.getAngle()));
+                break;
             }
         }
     }
