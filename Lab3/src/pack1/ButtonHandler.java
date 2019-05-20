@@ -37,7 +37,7 @@ public class ButtonHandler {
                         }
                     }
                 }catch (NumberFormatException e1){
-                    System.err.println("Please enter correct values");
+                    System.err.println("java.lang.NumberFormatException: Entered wrong values");
                 }
 
             }
@@ -72,7 +72,7 @@ public class ButtonHandler {
                         }
                     }
                 }catch (NumberFormatException e1){
-                    System.err.println("Please enter correct values");
+                    System.err.println("java.lang.NumberFormatException: Entered wrong values");
                 }
 
             }
@@ -107,7 +107,7 @@ public class ButtonHandler {
                         }
                     }
                 }catch (NumberFormatException e1){
-                    System.err.println("Please enter correct values");
+                    System.err.println("java.lang.NumberFormatException: Entered wrong values");
                 }
             }
         });
@@ -141,7 +141,7 @@ public class ButtonHandler {
                         }
                     }
                 }catch (NumberFormatException e1){
-                    System.err.println("Please enter correct values");
+                    System.err.println("java.lang.NumberFormatException: Entered wrong values");
                 }
             }
         });

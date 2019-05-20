@@ -29,7 +29,6 @@ public class Main extends Application{
         FlowPane flowPane = new FlowPane();
         flowPane.setAlignment(Pos.CENTER);
 
-       // Scene mainScene = new Scene(mainRoot, 520, 180);
 
         Button complexAlgebraicButton = new Button("2 ComplexAlgebraic");
         Button complexExponentialButton = new Button("2 ComplexExponential");
