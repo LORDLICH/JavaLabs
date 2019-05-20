@@ -21,7 +21,7 @@ public class MyThread extends Thread {
         System.out.printf("%s finished..\n", Thread.currentThread().getName());
     }
 
-    synchronized double calculate(){
+    double calculate(){
         return number1+number2;
     }
 }

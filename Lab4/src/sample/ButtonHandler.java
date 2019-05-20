@@ -28,7 +28,7 @@ public class ButtonHandler {
                     double[] vector = adder.calculate();
                     label.setText("Vector c: ( " + String.valueOf(vector[0]) + " , " + String.valueOf(vector[1]) + " )");
                 }catch (NumberFormatException e1){
-                    System.err.println("Please enter correct values");
+                    System.err.println("java.lang.NumberFormatException: Entered wrong values");
                 }
 
             }
